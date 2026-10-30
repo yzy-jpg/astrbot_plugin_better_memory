@@ -1,0 +1,109 @@
+{
+  "enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "总开关",
+    "hint": "关闭后本插件完全不写入、不注入、不响应命令"
+  },
+  "inject_enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "注入到 System Prompt",
+    "hint": "每轮对话前把相关记忆放进系统提示词；关闭后只记录不生效"
+  },
+  "episodic_enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "记录情景记忆",
+    "hint": "每条用户消息留一条带时间/情绪标签的小事件"
+  },
+  "auto_write": {
+    "type": "bool",
+    "default": true,
+    "description": "规则主动写入事实",
+    "hint": "检测到「我叫/我喜欢/我住在/记住…」时自动写入语义记忆"
+  },
+  "llm_extract": {
+    "type": "bool",
+    "default": false,
+    "description": "LLM 抽取事实",
+    "hint": "让模型从消息里提取事实（更准但每条多消耗一次模型调用，默认关闭）"
+  },
+  "reflect_enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "周期性复盘",
+    "hint": "每 N 条消息让模型回顾记忆，提炼新的人格/关系规则写回核心记忆"
+  },
+  "reflect_every": {
+    "type": "int",
+    "default": 60,
+    "description": "复盘间隔（消息条数）",
+    "hint": "至少 10；越大越省 token"
+  },
+  "max_inject_chars": {
+    "type": "int",
+    "default": 1200,
+    "description": "注入字符预算",
+    "hint": "每次注入记忆块的字符上限，防止挤占上下文"
+  },
+  "top_k_episodic": {
+    "type": "int",
+    "default": 6,
+    "description": "召回情景记忆条数"
+  },
+  "top_k_semantic": {
+    "type": "int",
+    "default": 5,
+    "description": "召回语义记忆条数"
+  },
+  "half_life_days": {
+    "type": "float",
+    "default": 30.0,
+    "description": "遗忘半衰期（天）",
+    "hint": "记忆的有效强度每过这么多天减半；被锁定的核心记忆不受影响"
+  },
+  "min_episodic_importance": {
+    "type": "float",
+    "default": 0.3,
+    "description": "情景记忆写入门槛",
+    "hint": "重要性低于该值的一句话不存"
+  },
+  "min_fact_importance": {
+    "type": "float",
+    "default": 0.45,
+    "description": "事实写入门槛"
+  },
+  "weights": {
+    "type": "object",
+    "description": "检索评分权重",
+    "hint": "四项之和建议为 1，默认 0.45 语义 / 0.20 鲜活 / 0.20 情绪一致 / 0.15 新近",
+    "items": {
+      "semantic": {
+        "type": "float",
+        "default": 0.45,
+        "description": "语义相似度权重"
+      },
+      "vividness": {
+        "type": "float",
+        "default": 0.2,
+        "description": "鲜活度权重"
+      },
+      "emotional": {
+        "type": "float",
+        "default": 0.2,
+        "description": "情绪一致性权重"
+      },
+      "recency": {
+        "type": "float",
+        "default": 0.15,
+        "description": "新近度权重"
+      }
+    }
+  },
+  "verbose": {
+    "type": "bool",
+    "default": false,
+    "description": "调试日志"
+  }
+}

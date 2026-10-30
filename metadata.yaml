@@ -1,0 +1,9 @@
+name: astrbot_plugin_better_memory
+display_name: 更好的记忆
+desc: 分层认知记忆系统 —— 把情景记忆、语义事实、人格锚点分开管理，带情感感知检索、动态遗忘与记忆再巩固、主动写入和周期性复盘，让 AI 真的"记得"你，而不是每次都在查资料。
+short_desc: 让 AI 像人一样记得你的分层记忆系统
+author: yzy
+version: 1.0.0
+repo: https://github.com/YOUR_GITHUB_NAME/astrbot_plugin_better_memory
+support_platforms: []
+astrbot_version: ">=4.29.0"

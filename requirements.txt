@@ -1,0 +1,1 @@
+# 本插件无额外依赖：jieba / rank-bm25 已随 AstrBot 一起安装。
